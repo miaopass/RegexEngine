@@ -12,29 +12,31 @@ class Parser;
 
 enum TokenKind
 {
-    ID,
-    STAR,
-    LEFT,
-    RIGHT,
-    UPRIGHT,
-    DOLLAR,
+    ID = 256,
+    STAR = 257,
+    LEFT = 258,
+    RIGHT = 259,
+    UPRIGHT = 260,
+    DOLLAR = 261,
 };
 
 enum TreeNodeKind
 {
-    LEAF,
-    NODE,
+    CONNECT = 262,
+    OR = 263,
+    REPEAT = 264,
+    LEAF = 265,
 };
 
 class Token
 {
 private:
     TokenKind kind;
-    string val;
+    char val;
 public:
-    Token(TokenKind k,string v) : kind(k),val(v){}
+    Token(TokenKind k,char v) : kind(k),val(v){}
     Token(const Token& s) = default;
-    const string& getVal() const { return this->val; }
+    char getVal() const { return this->val; }
     TokenKind getKind() const { return this->kind; }
     bool operator==(const Token& rhs) const
     {
@@ -46,13 +48,13 @@ class TreeNode
 {
 private:
     TreeNodeKind kind;
-    string val;
+    char val;
 public:
     TreeNode* left;
     TreeNode* right;
 public:
-    TreeNode(TreeNodeKind k,string v,TreeNode* l,TreeNode* r) :kind(k),val(v),left(l),right(r){ }
-    string getVal() { return val; }
+    TreeNode(TreeNodeKind k,char v,TreeNode* l,TreeNode* r) :kind(k),val(v),left(l),right(r){ }
+    char getVal() { return val; }
     TreeNodeKind getKind() { return kind; }
     ~TreeNode()
     {
