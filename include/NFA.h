@@ -5,6 +5,7 @@
 #include<parser.h>
 #include<iostream>
 
+
 using std::map;
 using std::pair;
 
@@ -42,6 +43,8 @@ struct Node
 
 class NFA
 {
+    friend class Regex;
+    friend class StateSet;
     public:
         NFA(TreeNode* root) : ast_root(root),current_num(0) { this_nfa = createNFA(root); }
         void printNFA()

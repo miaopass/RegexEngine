@@ -2,29 +2,21 @@
 #include<string>
 #include "parser.h"
 #include "NFA.h"
+#include "Regex.h"
 using namespace std;
 
-/*void printTree(TreeNode* root)
-{
-    if(root == NULL)
-    {
-        cout<<"NULL"<<endl;
-        return;
-    }
-    cout<<root->getVal()<<endl;
-    printTree(root->left);
-    printTree(root->right);
-}*/
 
 int main()
 {
-    string pat;
-
-    while(cin>>pat){
-        auto p = new Parser(pat);
-        auto tree = p->Exp();
-        auto nfa = new NFA(tree);
-        nfa->printNFA();
+    string pat,str;
+    while(cin>>pat>>str)
+    {
+        Regex re;
+        re.compile(pat);
+        if( re.match(str))
+            cout<<"true"<<endl;
+        else cout<<"false"<<endl;
     }
+    system("pause");
     return 0;
 }

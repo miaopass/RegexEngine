@@ -3,7 +3,8 @@
 #include<string>
 #include<vector>
 #include<iostream>
-
+#include<unistd.h>
+#include<cstdlib>
 using std::string;
 using std::vector;
 
@@ -73,11 +74,7 @@ class Parser
 {
     public:
         Parser(const string& pat) : pattern(pat),AST_root(NULL) {scan();}
-        virtual ~Parser()
-        {
-            if(AST_root)
-                delete AST_root;
-        }
+        virtual ~Parser() = default;
         TreeNode* Exp();
     private:
         TreeNode* Term();
@@ -100,6 +97,7 @@ class Parser
         void error(const string& exp,const string& but)
         {
             std::cout<<"expected "<<exp<<",but got "<<but<<std::endl;
+            system("pause");
             exit(0);
         }
 
