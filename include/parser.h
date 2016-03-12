@@ -1,10 +1,13 @@
 #ifndef PARSER_H
 #define PARSER_H
+
 #include<string>
 #include<vector>
 #include<iostream>
 #include<unistd.h>
 #include<cstdlib>
+#include<stdio.h>
+
 using std::string;
 using std::vector;
 
@@ -96,8 +99,7 @@ class Parser
         }
         void error(const string& exp,const string& but)
         {
-            std::cout<<"expected "<<exp<<",but got "<<but<<std::endl;
-            system("pause");
+            fprintf(stderr,"expected '%s' before '%s'\n",exp.c_str(),but.c_str());
             exit(0);
         }
 

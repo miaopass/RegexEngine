@@ -47,17 +47,6 @@ class NFA
     friend class StateSet;
     public:
         NFA(TreeNode* root) : ast_root(root),current_num(0) { this_nfa = createNFA(root); }
-        void printNFA()
-        {
-            for(auto ele: nodes)
-            {
-                auto node = ele.second;
-                for(auto edge = node->edges;edge;edge = edge->next)
-                {
-                    std::cout<<node->num<<"-----"<<edge->val<<"----->"<<edge->to<<std::endl;
-                }
-            }
-        }
         virtual ~NFA();
     private:
         map<int,Node*> nodes;
