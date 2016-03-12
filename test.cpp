@@ -1,22 +1,24 @@
 #include <iostream>
 #include<string>
-#include "parser.h"
-#include "NFA.h"
 #include "Regex.h"
-using namespace std;
 
+using std::cout;
+using std::endl;
+using std::string;
 
-int main()
+int main(int argc,char** argv)
 {
-    string pat,str;
-    while(cin>>pat>>str)
+    if(argc != 3)
     {
-        Regex re;
-        re.compile(pat);
-        if( re.match(str))
-            cout<<"true"<<endl;
-        else cout<<"false"<<endl;
+        cout<<"arguments error\n";
+        return 0;
     }
-    system("pause");
+    string pat = string(argv[1]);
+    string str = string(argv[2]);
+    Regex re = Regex();
+    re.compile(pat);
+    if(re.match(str))
+        cout<<"true\n";
+    else cout<<"false\n";
     return 0;
 }
